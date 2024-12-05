@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United Pentecostal Church of Kenya - Funyula</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="admin.js" defer></script> <!-- Added the admin.js script -->
+</head>
+<body>
+    <header>
+        <img src="https://github.com/sumba2000/don/blob/main/UPC.png?raw=true" style="width:150px;height:150px;">
+            <h1>UPCK-Funyula</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#ministries">Ministries</a></li>
+                <li><a href="#events">Events</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h2>Welcome to UPCK Funyula branch</h2>
+        <p>Serving God and Our Community with Faith and Love.</p>
+        <a href="https://maps.app.goo.gl/RMirhVKSZqaApTDc7">Our Location</a>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>The United Pentecostal Church of Kenya - Funyula is a vibrant and faith-centered community. Our mission is to spread the gospel of Jesus Christ and serve our community with dedication and love.</p>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <h4>.Friday Fellowship               - Fridays|2:00pm to 5:00pm</h4>
+        <h4>.Sunday School children Service - Sundays|7:30 am to 9:30am</h4>
+        <h4>.Church Service                 - Sundays|9:30 am to 1:00pm</h4>
+
+        <ul id="display-services"></ul> <!-- Placeholder for dynamically loaded services -->
+    </section>
+
+    <section id="ministries">
+        <h2>Our Ministries</h2>
+        <ul>
+            <li>Children’s Ministry</li>
+            <li>Youth Ministry</li>
+            <li>Women’s Ministry</li>
+            <li>Ushering & Praise Ministry</li>
+            <li>Outreach and Evangelism</li>
+        </ul>
+    </section>
+
+    <section id="events">
+        <h2>Upcoming Events</h2>
+        <h4>New year Kesha 31st December</h4>
+        <ul id="display-events"></ul> <!-- Placeholder for dynamically loaded events -->
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>We would love to hear from you! Feel free to reach out to us.</p>
+        <h4>Email us:</h4>
+        <h4>Call/Text:+254</h4>
+
+    </section>
+
+    <footer>
+        <p>© 2024 United Pentecostal Church of Kenya - Funyula. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Load data from Local Storage for display on the public page
+        document.addEventListener('DOMContentLoaded', () => {
+            const events = JSON.parse(localStorage.getItem('events')) || [];
+            const services = JSON.parse(localStorage.getItem('services')) || [];
+
+            // Populate Events Section
+            const eventList = document.getElementById('display-events');
+            eventList.innerHTML = events
+                .map(event => `<li><strong>${event.title}</strong> - ${event.date}<p>${event.description}</p></li>`)
+                .join('');
+
+            // Populate Services Section
+            const serviceList = document.getElementById('display-services');
+            serviceList.innerHTML = services
+                .map(service => `<li><strong>${service.name}</strong> - ${service.time}</li>`)
+                .join('');
+        });
+    </script>
+</body>
+</html>
